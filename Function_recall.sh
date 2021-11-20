@@ -1,5 +1,9 @@
 #!/bin/bash
 
-Function use
+test_function () {
 
-test ()
+echo 'recall#1'
+
+}
+
+test_function
