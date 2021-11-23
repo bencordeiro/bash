@@ -81,6 +81,10 @@ if [ $yesno = y ]; then
 		sudo chkrootkit
 fi
 
+     ###### Files by extension  #######
+
+     ########## Uncomlicated firewall ######
+
      ##########Securing OpenSSH##########
 if [ 'dpkg --list | grep ssh-server' ]; then
         echo -e "\nLooks like you have OpenSSH server installed"
