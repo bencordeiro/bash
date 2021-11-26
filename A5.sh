@@ -153,4 +153,3 @@ log_file
     echo "Done"
 echo
     read -p 'Hit Enter to exit'
-    
