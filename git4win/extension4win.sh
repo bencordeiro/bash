@@ -69,6 +69,8 @@ TYPE="py"
     find_type
 TYPE="mkv"
     find_type
+TYPE="exe"
+    find_type
 fi
 echo
     echo 'Also look for .txt files? (y/n)'
