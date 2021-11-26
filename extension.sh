@@ -9,12 +9,11 @@ find /home -name "*.$TYPE" 2>/dev/null
 }
 
 #find /home -name "*.$TYPE" 2>/dev/null
+YESNO=y
+    read -p 'Search for files in home diretories? (Y/n)' var_yesno
+    [ -n "$var_yesno" ] && YESNO=$var_yesno
 
-    echo 'Search for files in home diretories? (y/n)'
-
-read yesno
-
-if [ $yesno = y ]; then
+if [ $YESNO = y ]; then
 
 TYPE="mp3"
     find_type
@@ -70,10 +69,11 @@ TYPE="mkv"
     find_type
 fi
 echo
-    echo 'Also look for .txt files? (y/n)'
+YESNO=y
+    read -p 'Also look for .txt files? (Y/n)' var_yesno
+    [ -n "$var_yesno" ] && YESNO=$var_yesno
 
-read yesno
-if [ $yesno = y ]; then
+if [ $YESNO = y ]; then
 
 TYPE="txt"
     find_type
