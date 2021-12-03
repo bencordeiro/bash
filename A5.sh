@@ -11,14 +11,16 @@ fi
 echo "Initializing hardening within: $(pwd)"
 # Some things work in echo lines like UID
 echo "Your UID is $[UID]"
+#FUNCTIONs
+find_type () {
+find /home -name "*.$TYPE" 2>/dev/null
+}
 
-#Function testing
-log_file () {
-#Function testing
+#FUNCTIONs
 
 #Script by Ben Cordeiro
 
-    ################LogFile setup #####################
+    ##############LogFile setup #################
 LOG=y
     read -p 'Log this session? (ENTER for default)[Y/n] ' answer
     [ -n "$answer" ] && LOG=$answer
@@ -46,7 +48,7 @@ echo
   exec > >(tee $LOGFULLPATH) 2>&1
 fi
 
-    ################ Update & Upgrade ########################
+    ############### Update & Upgrade ##############
 U_U=y
     read -p "Update & Upgrade? (Y/n)" var_U
     [ -n "$var_U" ] && U_U=$var_U
@@ -55,7 +57,7 @@ if [ $U_U = y ]; then
         sudo apt-get update -y && sudo apt-get upgrade -y
 fi
 
-     ############# Root Kits ############ Make them verbose
+    ############# Root Kits ############ Make them verbose
 
 #rkhunter
 echo
@@ -93,11 +95,7 @@ fi
     ####### Disable root login ++ Make an separate admin user.
 # read -p 'Make amdin user and disable root login'
 
-   ####### Files by extension  #######
-# read -p 'Show added extentions? (Y/n)'
-
-
-     ########## Uncomlicated firewall ######
+    ########## Uncomlicated firewall #########
 UFW=y
 echo
     read -p "Enable UFW? (Y/n) " var_ufw
@@ -110,7 +108,7 @@ if [ $UFW = y ]; then
         echo 'ufw is up to date and enabled'
 fi
         
-     ##########Securing OpenSSH##########
+    ########## Securing OpenSSH ##########
     if [ 'dpkg --list | grep ssh-server' ]; then
 
 SSH=y
@@ -139,17 +137,93 @@ if [ $SSH = y ]; then
     fi
 fi
 
-#fix for username not in sudoers file
-#sudo su or sudo : type root passsword
-#sudo apt-get install sudo
-#adduser (username) sudo : adding usrname to sudo file
-#sudo chmod  0440  /etc/sudoers : change perms
+    ######## Files by extensions #########
+echo
+YESNO=y
+    read -p 'Search for files in home diretories? (Y/n)' var_yesno
+    [ -n "$var_yesno" ] && YESNO=$var_yesno
 
-#function end
-}
-#function execution #Everytime log_file is written it will repeat commands in function.
-log_file
-    echo -e '\nRemember BrowserSecrurity, Unwanted Applications, Turn off ipv6, Restrict Users to Use Old Passwords booting from external media or games...'
-    echo "Done"
+if [ $YESNO = y ]; then
+
+TYPE="mp3"
+    find_type
+TYPE="flv"
+    find_type
+TYPE="mov"
+    find_type
+TYPE="sh"
+    find_type
+TYPE="mp4"
+    find_type
+TYPE="avi"
+    find_type
+TYPE="mpg"
+    find_type
+TYPE="mpeg"
+    find_type
+TYPE="flac"
+    find_type
+TYPE="m4a"
+    find_type
+TYPE="ogg"
+    find_type
+TYPE="gif"
+    find_type
+TYPE="png"
+    find_type
+TYPE="jpg"
+    find_type
+TYPE="jpeg"
+    find_type
+TYPE="pptx"
+    find_type
+TYPE="pptx"
+    find_type
+TYPE="wav"
+    find_type
+TYPE="bat"
+    find_type
+TYPE="zip"
+    find_type
+TYPE="dat"
+    find_type
+TYPE="log"
+    find_type
+TYPE="xml"
+    find_type
+TYPE="pst"
+    find_type
+TYPE="py"
+    find_type
+TYPE="mkv"
+    find_type
+fi
+echo
+YESNO=y
+    read -p 'Also look for .txt files? (Y/n)' var_yesno
+    [ -n "$var_yesno" ] && YESNO=$var_yesno
+
+if [ $YESNO = y ]; then
+
+TYPE="txt"
+    find_type
+
+fi
+echo
+    echo 'Succesffuly completed your search in Home!'
+
+# fix for username not in sudoers file
+# sudo su or sudo : type root passsword
+# sudo apt-get install sudo
+# adduser (username) sudo : adding usrname to sudo file
+# sudo chmod  0440  /etc/sudoers : change perms
+
+    echo -e '\nRemember/ToDo:
+
+BrowserSecrurity
+Unwanted Applications (games)
+Turn off ipv6
+Restrict Users to Use Old Passwords
+Booting from external media'
 echo
     read -p 'Hit Enter to exit'
