@@ -9,13 +9,16 @@ find /c/Users -name "*.$TYPE" 2>/dev/null
 
 }
 
+YESNO=y
+	read -p "Search for Files (Y/n)" var_yesno
+	[ -n "$var_yesno" ] &&  YESNO=$var_yesno
+if [ $YESNO = y ]; then
+	echo 'Searching...'
+
 #find /home -name "*.$TYPE" 2>/dev/null
-
-    echo 'Search for files in home diretories? (y/n)'
-
-read yesno
-
-if [ $yesno = y ]; then
+#    echo 'Search for files in home diretories? (y/n)'
+#read yesno
+#if [ $yesno = y ]; then
 
 TYPE="mp3"
     find_type
@@ -73,15 +76,20 @@ TYPE="exe"
     find_type
 fi
 echo
-    echo 'Also look for .txt files? (y/n)'
 
-read yesno
-if [ $yesno = y ]; then
+YESNO=y
+    read -p 'Also look for .txt files? (Y/n)' var_yesno
+    [ -n "$var_yesno" ] && YESNO=$var_yesno
+
+if [ $YESNO = y ]; then
 
 TYPE="txt"
     find_type
 
 fi
 
-echo 'Successfully Completed Search! I hope'
-exit
+echo 'Search Completed.'
+
+echo
+
+	read -p 'Hit Enter to Exit'
