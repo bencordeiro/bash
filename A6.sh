@@ -65,7 +65,8 @@ A_U=y
 if [ $A_U = var_A+U ]; then
         sudo apt-get install unattended-upgrades apt-listchanges bsd-mailx
         sudo dpkg-reconfigure -plow unattended-upgrades
-        systemctl status unattended-upgrades.service | grep active && echo 'Successfully Enables Unattended-Upgrades'
+        systemctl status unattended-upgrades.service | grep active && echo 'Successfully Enabled Unattended-Upgrades'
+	
     ############# Root Kits ############ Make them verbose
 
 #rkhunter
