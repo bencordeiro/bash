@@ -57,6 +57,15 @@ if [ $U_U = y ]; then
         sudo apt-get update -y && sudo apt-get upgrade -y
 fi
 
+    ############## Auto updates ##############
+A_U=y
+    read -p "Install Unattended Updates (Y/n)" var_A+U
+    [ -n "var_A+U" ] && A_U=$var_A+U
+
+if [ $A_U = var_A+U ]; then
+        sudo apt-get install unattended-upgrades apt-listchanges bsd-mailx
+        sudo dpkg-reconfigure -plow unattended-upgrades
+        systemctl status unattended-upgrades.service | grep active && echo 'Successfully Enables Unattended-Upgrades'
     ############# Root Kits ############ Make them verbose
 
 #rkhunter
