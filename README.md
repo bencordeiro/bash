@@ -1,4 +1,4 @@
 # bash
-CyberTitan linux script
+Custom and Private script directory!
 
 by: Ben Cordeiro
