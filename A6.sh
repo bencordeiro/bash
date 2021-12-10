@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Script by Ben Cordeiro, Made for CWDHS Post Mortem
 #Check if Running with root user
 
 if [ "$USER" != "root" ]; then
@@ -7,20 +8,17 @@ if [ "$USER" != "root" ]; then
       echo "Can only be run by root"
       exit
 fi
-
+    ### Welcome ###
 echo "Initializing hardening within: $(pwd)"
 # Some things work in echo lines like UID
 echo "Your UID is $[UID]"
-#FUNCTIONs
+
+    ### Functions ###
 find_type () {
 find /home -name "*.$TYPE" 2>/dev/null
 }
 
-#FUNCTIONs
-
-#Script by Ben Cordeiro
-
-    ##############LogFile setup #################
+    ############## LogFile setup #################
 LOG=y
     read -p 'Log this session? (ENTER for default)[Y/n] ' answer
     [ -n "$answer" ] && LOG=$answer
@@ -35,7 +33,7 @@ if [ $LOG = y ]; then
 echo
 
   ## COULD ASk FOR LOCATION AND VERIFY for / or just ask for full path to file
-  ## Uncomment for path input
+  ## comment to remove path input
     read -p "Location of log file (ENTER for default)[${LOGPATH}]: " newloc
     [ -n "$newloc" ] && LOGPATH=$newloc
 echo
@@ -48,7 +46,7 @@ echo
   exec > >(tee $LOGFULLPATH) 2>&1
 fi
 
-    ############### Update & Upgrade ##############
+    ############## Update & Upgrade ##############
 U_U=y
     read -p "Update & Upgrade? (Y/n)" var_U
     [ -n "$var_U" ] && U_U=$var_U
@@ -58,15 +56,16 @@ if [ $U_U = y ]; then
 fi
 
     ############## Auto updates ##############
+echo
 A_U=y
-    read -p "Install Unattended Updates (Y/n)" var_A+U
-    [ -n "var_A+U" ] && A_U=$var_A+U
+    read -p "Install Unattended Updates (Y/n)" var_AU
+    [ -n "$var_AU" ] && A_U=$var_AU
 
 if [ $A_U = var_A+U ]; then
         sudo apt-get install unattended-upgrades apt-listchanges bsd-mailx
         sudo dpkg-reconfigure -plow unattended-upgrades
         systemctl status unattended-upgrades.service | grep active && echo 'Successfully Enabled Unattended-Upgrades'
-	
+fi
     ############# Root Kits ############ Make them verbose
 
 #rkhunter
@@ -88,10 +87,9 @@ fi
 #          sudo rkhunter --check
 #fi
 
-
 #chkrookit
+echo
 CHK=y 
-echo 
     read -p "chkrootkit (Rootkit)? (Y/n)" var_chk
     [ -n "$var_chk" ] && CHK=$var_chk
 
@@ -106,8 +104,8 @@ fi
 # read -p 'Make amdin user and disable root login'
 
     ########## Uncomlicated firewall #########
-UFW=y
 echo
+UFW=y
     read -p "Enable UFW? (Y/n) " var_ufw
     [ -n "$var_ufw" ] && UFW=$var_ufw
 
@@ -261,6 +259,9 @@ BrowserSecrurity
 Unwanted Applications (games)
 Turn off ipv6
 Restrict Users to Use Old Passwords
-Booting from external media'
+Booting from external media
+...
+...
+...'
 echo
     read -p 'Hit Enter to exit'
