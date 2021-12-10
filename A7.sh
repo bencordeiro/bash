@@ -266,7 +266,7 @@ echo
 
   ######## NOPASSWD in SUDOERS ##########
 echo
-sudo cat /etc/sudoers | grep NOPASSWD
+sudo cat /etc/sudoers | grep -i NOPASSWD
 if [ $? -eq 0 ]; then
 
 echo 'NOPASS value in sudoers'
