@@ -288,12 +288,12 @@ echo
     sudo find / \( -nouser -o -nogroup \)
 
 ####### purge/REMOVE stuff ######
-sudo apt-get purge nmap
-sudo apt-get purge zenmap
-sudo apt-get purge hydra*
-sudo apt-get purge john*
-sudo apt-get purge nikto*
-sudo apt-get purge netcat*
+#sudo apt-get purge nmap
+#sudo apt-get purge zenmap
+#sudo apt-get purge hydra*
+#sudo apt-get purge john*
+#sudo apt-get purge nikto*
+#sudo apt-get purge netcat*
 
 # fix for username not in sudoers file
 # sudo su or sudo : type root passsword
