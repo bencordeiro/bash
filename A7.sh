@@ -309,7 +309,7 @@ Turn off ipv6
 Restrict Users to Use Old Passwords
 Booting from external media
 ps -aux
-...
+More file ientification commands
 ...'
 echo
     read -p 'Hit Enter to exit'
