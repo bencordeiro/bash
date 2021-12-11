@@ -1,2 +1,1 @@
 https://github.com/TH3xACE/SUDO_KILLER
-https://github.com/JohnHammond/ctf-katana.git          ---     FOR capture the flag
