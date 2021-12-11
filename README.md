@@ -1,4 +1,4 @@
 # bash
-Custom and Private script directory!
+Custom and Public script directory for cyberpatriot
 
 by: Ben Cordeiro
