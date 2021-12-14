@@ -297,6 +297,7 @@ echo
 #sudo apt-get purge netcat*
 
 # fix for username not in sudoers file
+# usermod -aG sudo (user)
 # sudo su or sudo : type root passsword
 # sudo apt-get install sudo
 # adduser (username) sudo : adding usrname to sudo file
