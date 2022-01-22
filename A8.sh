@@ -340,6 +340,8 @@ More file ientification commands
 Remove SSH?
 Service icmp snmp pop3 sendmail mail stop
 /etc/hosts for unauthorized users
+passwd -l root
+deluser
 ...'
 echo
     read -p 'Hit Enter to exit'
