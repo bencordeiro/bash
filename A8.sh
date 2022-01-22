@@ -300,6 +300,13 @@ fi
 
 ## NetStat
 netstat -ntlup
+
+### Check if file exists && perms ### 
+ls -l /etc/shadow
+ls -l /etc/passwd
+ls -l  /etc/apt/sources.list
+ls -l /etc/sudoers
+
 echo
    ######## Packs that may be dangerous ###
 
