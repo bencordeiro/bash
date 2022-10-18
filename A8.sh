@@ -2,7 +2,9 @@
 
 #Script by Ben Cordeiro, Made for CWDHS Post Mortem
 #Check if Running with root user
-
+#note
+# grep "^username" /etc/passwd
+# grep "^tom" /etc/passwd
 if [ "$USER" != "root" ]; then
       echo "Permission Denied"
       echo "Can only be run by root"
